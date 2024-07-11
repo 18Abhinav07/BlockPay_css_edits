@@ -1,5 +1,6 @@
 const Company = require("../models/companySchema");
 const Employee = require("../models/employeeSchema");
+const web3Utils = require("../solidity/web3");
 
 const addEmployee = async (req, res) => {
   try {
@@ -29,6 +30,14 @@ const addEmployee = async (req, res) => {
 
     const companyObj = await Company.findOne({ companyName });
 
+    await web3Utils.addEmployee(
+      companyObj.deployAccount,
+      account,
+      salary,
+      payStartDate,
+      payEndDate
+    );
+
     // Add the new employee to the company's employees array
     companyObj.emps.push(employee);
 
@@ -56,6 +65,7 @@ const removeEmployee = async (req, res) => {
 
     const companyObj = await Company.findOne({ companyName }).populate("emps");
 
+    await web3Utils.removeEmployee(companyObj.deployAccount, account);
     // remove company
     companyObj.emps = companyObj.emps.filter((emp) => emp.account !== account);
 
@@ -77,6 +87,11 @@ const removeEmployee = async (req, res) => {
 const updateEmployee = async (req, res) => {
   try {
     const { account } = req.params;
+
+    //TODO
+    const companyName = "c2fo";
+
+    const companyObj = await Company.findOne({ companyName }).populate("emps");
 
     const employeeObj = await Employee.findOne({ account });
 

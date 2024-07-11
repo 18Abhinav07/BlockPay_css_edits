@@ -1,4 +1,5 @@
 const Company = require("../models/companySchema");
+const { deploy } = require("../solidity/web3");
 
 const register = async (req, res) => {
   try {
@@ -9,8 +10,10 @@ const register = async (req, res) => {
         password: req.body.password,
       },
       emps: [],
-      deployAccount: "xyz",
+      deployAccount: "",
     });
+
+    newCompany.deployAccount = await deploy();
 
     await newCompany.save();
 
