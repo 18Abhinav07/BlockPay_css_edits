@@ -1,11 +1,9 @@
 // utils/jwt.js
 const jwt = require('jsonwebtoken');
 
-const secretKey = 'your_secret_key'; // Use a strong, unique secret key in production
-
 // Generate a token
 const generateToken = (payload) => {
-  return jwt.sign(payload, secretKey, { expiresIn: '1h' }); // Token expires in 1 hour
+  return jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '1h' }); // Token expires in 1 hour
 };
 
 // Verify a token
