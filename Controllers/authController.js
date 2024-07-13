@@ -18,6 +18,24 @@ const isLoggedIn = (req, res, next) => {
   }
 };
 
+const checkForHR = (req, res, next) => {
+  if (req.user.account) {
+    return res.status(401).json({ message: "Permission denied" });
+  }
+
+  next();
+};
+
+const checkForEmployee = (req, res, next) => {
+  if (!req.user.account) {
+    return res.status(401).json({ message: "Permission denied" });
+  }
+
+  next();
+};
+
 module.exports = {
-    isLoggedIn
-}
+  isLoggedIn,
+  checkForHR,
+  checkForEmployee,
+};

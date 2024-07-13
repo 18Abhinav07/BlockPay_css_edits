@@ -14,8 +14,8 @@ const addEmployee = async (req, res) => {
       designation,
     } = req.body;
 
-    // TODO
-    const companyName = "c2fo";
+    const companyName = req.user.companyName;
+    // ToDO
     const password = "123";
 
     const employee = new Employee({
@@ -60,8 +60,7 @@ const removeEmployee = async (req, res) => {
   try {
     const { account } = req.params;
 
-    //TODO
-    const companyName = "c2fo";
+    const companyName = req.user.companyName;
 
     const companyObj = await Company.findOne({ companyName }).populate("emps");
 
@@ -88,8 +87,7 @@ const updateEmployee = async (req, res) => {
   try {
     const { account } = req.params;
 
-    //TODO
-    const companyName = "c2fo";
+    const companyName = req.user.companyName;
 
     const companyObj = await Company.findOne({ companyName }).populate("emps");
 

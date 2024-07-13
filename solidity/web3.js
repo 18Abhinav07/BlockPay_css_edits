@@ -102,6 +102,11 @@ const payAllEmployees = async (address) => {
     .send({ from: accounts[0], gas: 300000 });
 };
 
+const getHistory = async (address, account) => {
+  const blockpay = new web3.eth.Contract(contract.abi, address);
+  return await blockpay.methods.getHistory(account).call();
+};
+
 module.exports = {
   deploy,
   checkBalance,
@@ -111,4 +116,5 @@ module.exports = {
   depositFunds,
   payAllEmployees,
   removeEmployee,
+  getHistory
 };

@@ -13,12 +13,22 @@ const registerRouter = require("./routes/registerRouter");
 const loginRouter = require("./routes/loginRouter");
 const adminRouter = require("./routes/adminRouter");
 const authRouter = require("./Controllers/authController");
+const employeeRouter = require("./routes/employeeRouter");
 
 app.use("/login", loginRouter);
 app.use(`/register`, registerRouter);
-app.use(`${prefix}/:companyName/admin`, authRouter.isLoggedIn, adminRouter);
-
-// app.use(`${prefix}/:name`, router);
+app.use(
+  `${prefix}/:companyName/admin`,
+  authRouter.isLoggedIn,
+  authRouter.checkForHR,
+  adminRouter
+);
+app.use(
+  `/employee`,
+  authRouter.isLoggedIn,
+  authRouter.checkForEmployee,
+  employeeRouter
+);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
