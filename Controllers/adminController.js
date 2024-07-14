@@ -106,7 +106,6 @@ const removeEmployee = async (req, res) => {
   }
 };
 
-// TODO
 const updateEmployee = async (req, res) => {
   try {
     const { account, salary, payStartDate, payEndDate } = req.body;

@@ -17,10 +17,10 @@ const employeeRouter = require("./routes/employeeRouter");
 const financeRouter = require("./routes/financeRouter");
 
 app.use("/login", loginRouter);
-app.use(`/register`, registerRouter);
+app.use("/register", registerRouter);
 app.use("/admin", authRouter.isLoggedIn, authRouter.checkForHR, adminRouter);
 app.use(
-  `/employee`,
+  "/employee",
   authRouter.isLoggedIn,
   authRouter.checkForEmployee,
   employeeRouter
