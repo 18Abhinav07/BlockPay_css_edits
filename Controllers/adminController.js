@@ -1,3 +1,5 @@
+const BigNumber = require('bignumber.js');
+
 const Company = require("../models/companySchema");
 const Employee = require("../models/employeeSchema");
 const web3Utils = require("../solidity/web3");
@@ -143,7 +145,7 @@ const totalSalaryToBePaid = async (req, res) => {
     );
     res.status(200).json({
       status: "success",
-      data: totalSalary.toString(),
+      data: `${totalSalary.toString()} ether`,
     });
   } catch (err) {
     res.status(404).json({
@@ -157,6 +159,19 @@ const payAllEmployees = async (req, res) => {
   try {
     const companyName = req.user.companyName;
     const companyObj = await Company.findOne({ companyName });
+    const currentBalance = new BigNumber(await web3Utils.checkBalance(
+      companyObj.deployAccount
+    ));
+    const totalSalaryToBePaid = new BigNumber(await web3Utils.totalSalaryToBePaid(
+      companyObj.deployAccount
+    ));
+
+    if (currentBalance.isLessThan(totalSalaryToBePaid)) {
+      return res.status(404).json({
+        status: "failed",
+        message: "Insufficient funds to pay all employees",
+      });
+    }
 
     await web3Utils.payAllEmployees(companyObj.deployAccount);
 
@@ -177,5 +192,5 @@ module.exports = {
   removeEmployee,
   updateEmployee,
   payAllEmployees,
-  totalSalaryToBePaid
+  totalSalaryToBePaid,
 };

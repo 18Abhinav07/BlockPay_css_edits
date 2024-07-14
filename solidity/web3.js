@@ -111,7 +111,8 @@ const getHistory = async (address, account) => {
 
 const totalSalaryToBePaid = async (address) => {
   const blockpay = new web3.eth.Contract(contract.abi, address);
-  return await blockpay.methods.totalSalaryToBePaid().call();
+  const totalSalary = await blockpay.methods.totalSalaryToBePaid().call();
+  return web3.utils.fromWei(totalSalary, "ether");
 };
 
 module.exports = {
@@ -124,5 +125,5 @@ module.exports = {
   payAllEmployees,
   removeEmployee,
   getHistory,
-  totalSalaryToBePaid
+  totalSalaryToBePaid,
 };
