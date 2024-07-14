@@ -109,20 +109,18 @@ const removeEmployee = async (req, res) => {
 // TODO
 const updateEmployee = async (req, res) => {
   try {
-    const { account } = req.params;
+    const { account, salary, payStartDate, payEndDate } = req.body;
 
     const companyName = req.user.companyName;
 
-    const companyObj = await Company.findOne({ companyName }).populate("emps");
-
-    const employeeObj = await Employee.findOne({ account });
-
-    employeeObj.name = req.body.name || employeeObj.name;
-    employeeObj.salary = req.body.salary || employeeObj.salary;
-    employeeObj.account = req.body.account || employeeObj.account;
-    employeeObj.designation = req.body.designation || employeeObj.designation;
-
-    await employeeObj.save();
+    const companyObj = await Company.findOne({ companyName });
+    await web3Utils.updateEmployee(
+      companyObj.deployAccount,
+      account,
+      salary,
+      payStartDate,
+      payEndDate
+    );
 
     res.status(200).json({
       status: "success",
@@ -160,5 +158,5 @@ module.exports = {
   addEmployee,
   removeEmployee,
   updateEmployee,
-  payAllEmployees
+  payAllEmployees,
 };
