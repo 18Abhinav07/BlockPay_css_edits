@@ -6,7 +6,7 @@ const getEmployeeDetails = async (req, res) => {
     const companyName = req.user.companyName;
     const account = req.user.account;
 
-    const companyObj = await Company.findOne({ companyName }).populate("emps");
+    const companyObj = await Company.findOne({ companyName });
 
     const employee = await web3Utils.getEmployeeDetails(
       companyObj.deployAccount,
@@ -32,4 +32,29 @@ const getEmployeeDetails = async (req, res) => {
   }
 };
 
-module.exports = { getEmployeeDetails };
+const getEmployeeSalaryHistory = async (req, res) => {
+  try {
+    const companyName = req.user.companyName;
+    const account = req.user.account;
+
+    const companyObj = await Company.findOne({ companyName });
+    let empSalary = await web3Utils.getHistory(
+      companyObj.deployAccount,
+      account
+    );
+
+    empSalary = empSalary.map((salary) => Number(salary)); // converting bigint to number
+
+    res.status(200).json({
+      status: "success",
+      data: empSalary,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
+
+module.exports = { getEmployeeDetails, getEmployeeSalaryHistory };

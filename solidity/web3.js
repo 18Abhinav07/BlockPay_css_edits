@@ -40,7 +40,9 @@ const depositFunds = async (address, ether) => {
 const checkBalance = async (address) => {
   const blockpay = new web3.eth.Contract(contract.abi, address);
 
-  return await blockpay.methods.checkBalance().call();
+  const balance = await blockpay.methods.checkBalance().call();
+
+  return web3.utils.fromWei(balance, "ether");
 };
 
 const addEmployee = async (
@@ -116,5 +118,5 @@ module.exports = {
   depositFunds,
   payAllEmployees,
   removeEmployee,
-  getHistory
+  getHistory,
 };
