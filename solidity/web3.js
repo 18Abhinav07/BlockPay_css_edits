@@ -2,6 +2,9 @@ const fs = require("fs");
 const { Web3, eth } = require("web3");
 const path = require("path");
 
+// const coreTestnetRpcUrl = "https://rpc.test.btcs.network";
+// const web3 = new Web3(new Web3.providers.HttpProvider(coreTestnetRpcUrl));
+
 // Connect to a local Ethereum node
 const web3 = new Web3("http://127.0.0.1:7545"); // Change this to your Ethereum node address
 
