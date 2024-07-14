@@ -27,9 +27,9 @@ adminSchema.pre("save", function (next) {
 
 // Define the company schema
 const companySchema = new mongoose.Schema({
-  companyName: { type: String, required: true },
+  companyName: { type: String, required: true, unique: true },
   admin: adminSchema,
-  emps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Employee' }],
+  emps: [{ type: mongoose.Schema.Types.ObjectId, ref: "Employee" }],
   deployAccount: { type: String, required: true },
 });
 

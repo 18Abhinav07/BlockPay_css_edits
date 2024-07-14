@@ -1,6 +1,8 @@
 const Company = require("../models/companySchema");
 const Employee = require("../models/employeeSchema");
 const web3Utils = require("../solidity/web3");
+const { sendEmail } = require("../utils/nodemailer");
+const { generateRandomPassword } = require("../utils/random");
 
 const addEmployee = async (req, res) => {
   try {
@@ -15,8 +17,20 @@ const addEmployee = async (req, res) => {
     } = req.body;
 
     const companyName = req.user.companyName;
-    // ToDO
+
+    // TODO
+    const username = "user@example.com";
     const password = "123";
+
+    // const mailOptions = {
+    //   from: `"Your Name" <${process.env.EMAIL_USER}>`,
+    //   to: "sahil.saxena.58555@gmail.com",
+    //   subject: "Your Account Details",
+    //   text: `Hello,\n\nYour account has been created.\n\nUsername: ${username}\nPassword: ${password}\n\nBest Regards,\nYour Company`,
+    //   html: `<p>Hello,</p><p>Your account has been created.</p><p><strong>Username:</strong> ${username}</p><p><strong>Password:</strong> ${password}</p><p>Best Regards,<br>Your Company</p>`,
+    // };
+
+    //sendEmail(mailOptions); // send email
 
     const employee = new Employee({
       name,
@@ -26,9 +40,18 @@ const addEmployee = async (req, res) => {
       account,
     });
 
-    await employee.save();
+    const companyObj = await Company.findOne({ companyName }).populate("emps");
 
-    const companyObj = await Company.findOne({ companyName });
+    const hasEmployee = companyObj.emps.filter((emp) => emp.name === name);
+
+    if (hasEmployee.length > 0) {
+      return res.status(404).json({
+        status: "failed",
+        message: "Employee alreday exist",
+      });
+    }
+
+    await employee.save();
 
     await web3Utils.addEmployee(
       companyObj.deployAccount,

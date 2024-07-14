@@ -3,9 +3,8 @@ const web3Utils = require("../solidity/web3");
 
 const getEmployeeDetails = async (req, res) => {
   try {
-    // TODO
     const companyName = req.user.companyName;
-    const account = "0x67042c27084F08CFdC9Bde149F2252b5E71a7f7c";
+    const account = req.user.account;
 
     const companyObj = await Company.findOne({ companyName }).populate("emps");
 
