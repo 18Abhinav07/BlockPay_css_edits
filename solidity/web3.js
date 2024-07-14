@@ -109,6 +109,11 @@ const getHistory = async (address, account) => {
   return await blockpay.methods.getHistory(account).call();
 };
 
+const totalSalaryToBePaid = async (address) => {
+  const blockpay = new web3.eth.Contract(contract.abi, address);
+  return await blockpay.methods.totalSalaryToBePaid().call();
+};
+
 module.exports = {
   deploy,
   checkBalance,
@@ -119,4 +124,5 @@ module.exports = {
   payAllEmployees,
   removeEmployee,
   getHistory,
+  totalSalaryToBePaid
 };

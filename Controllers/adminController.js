@@ -133,12 +133,31 @@ const updateEmployee = async (req, res) => {
   }
 };
 
+const totalSalaryToBePaid = async (req, res) => {
+  try {
+    const companyName = req.user.companyName;
+    const companyObj = await Company.findOne({ companyName });
+
+    const totalSalary = await web3Utils.totalSalaryToBePaid(
+      companyObj.deployAccount
+    );
+    res.status(200).json({
+      status: "success",
+      data: totalSalary.toString(),
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
+
 const payAllEmployees = async (req, res) => {
   try {
     const companyName = req.user.companyName;
     const companyObj = await Company.findOne({ companyName });
 
-    console.log(companyObj);
     await web3Utils.payAllEmployees(companyObj.deployAccount);
 
     res.status(200).json({
@@ -158,4 +177,5 @@ module.exports = {
   removeEmployee,
   updateEmployee,
   payAllEmployees,
+  totalSalaryToBePaid
 };

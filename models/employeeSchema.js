@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
+//TODO
 const employeeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   salary: { type: Number, required: true },

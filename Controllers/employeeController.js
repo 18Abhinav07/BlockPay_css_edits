@@ -15,9 +15,9 @@ const getEmployeeDetails = async (req, res) => {
 
     const result = {
       account: employee[0],
-      salary: Number(employee[1]),
-      payStartDate: Number(employee[2]),
-      payStartEnd: Number(employee[3]),
+      salary: employee[1].toString(),
+      payStartDate: employee[2].toString(),
+      payStartEnd: employee[3].toString(),
     };
 
     return res.status(200).json({
@@ -43,7 +43,7 @@ const getEmployeeSalaryHistory = async (req, res) => {
       account
     );
 
-    empSalary = empSalary.map((salary) => Number(salary)); // converting bigint to number
+    empSalary = empSalary.map((salary) => salary.toString()); // converting bigint to string
 
     res.status(200).json({
       status: "success",
