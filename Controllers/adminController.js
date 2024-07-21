@@ -1,4 +1,4 @@
-const BigNumber = require('bignumber.js');
+const BigNumber = require("bignumber.js");
 
 const Company = require("../models/companySchema");
 const Employee = require("../models/employeeSchema");
@@ -24,13 +24,13 @@ const addEmployee = async (req, res) => {
     const username = "user@example.com";
     const password = "123";
 
-    // const mailOptions = {
-    //   from: `"Your Name" <${process.env.EMAIL_USER}>`,
-    //   to: "sahil.saxena.58555@gmail.com",
-    //   subject: "Your Account Details",
-    //   text: `Hello,\n\nYour account has been created.\n\nUsername: ${username}\nPassword: ${password}\n\nBest Regards,\nYour Company`,
-    //   html: `<p>Hello,</p><p>Your account has been created.</p><p><strong>Username:</strong> ${username}</p><p><strong>Password:</strong> ${password}</p><p>Best Regards,<br>Your Company</p>`,
-    // };
+    const mailOptions = {
+      from: `"Your Name" <${process.env.EMAIL_USER}>`,
+      email: "sahil.saxena.58555@gmail.com",
+      subject: "Your Account Details",
+      text: `Hello,\n\nYour account has been created.\n\nUsername: ${username}\nPassword: ${password}\n\nBest Regards,\nYour Company`,
+      message: `<p>Hello,</p><p>Your account has been created.</p><p><strong>Username:</strong> ${username}</p><p><strong>Password:</strong> ${password}</p><p>Best Regards,<br>Your Company</p>`,
+    };
 
     //sendEmail(mailOptions); // send email
 
@@ -72,6 +72,23 @@ const addEmployee = async (req, res) => {
     res.status(200).json({
       status: "success",
       message: "Employee added",
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
+
+const getAllEmployees = async (req, res) => {
+  try {
+    const companyName = req.user.companyName;
+
+    const companyObj = await Company.findOne({ companyName }).populate("emps");
+    res.status(200).json({
+      status: "success",
+      data: companyObj.emps,
     });
   } catch (err) {
     res.status(404).json({
@@ -159,12 +176,12 @@ const payAllEmployees = async (req, res) => {
   try {
     const companyName = req.user.companyName;
     const companyObj = await Company.findOne({ companyName });
-    const currentBalance = new BigNumber(await web3Utils.checkBalance(
-      companyObj.deployAccount
-    ));
-    const totalSalaryToBePaid = new BigNumber(await web3Utils.totalSalaryToBePaid(
-      companyObj.deployAccount
-    ));
+    const currentBalance = new BigNumber(
+      await web3Utils.checkBalance(companyObj.deployAccount)
+    );
+    const totalSalaryToBePaid = new BigNumber(
+      await web3Utils.totalSalaryToBePaid(companyObj.deployAccount)
+    );
 
     if (currentBalance.isLessThan(totalSalaryToBePaid)) {
       return res.status(404).json({
@@ -193,4 +210,5 @@ module.exports = {
   updateEmployee,
   payAllEmployees,
   totalSalaryToBePaid,
+  getAllEmployees
 };

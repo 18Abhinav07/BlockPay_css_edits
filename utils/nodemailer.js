@@ -2,21 +2,23 @@ const nodemailer = require("nodemailer");
 
 // Create a transporter object using SMTP transport
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "live.smtp.mailtrap.io",
+  port: 587,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
+    user: "api",
+    pass: process.env.NODEMAILER_PWD,
   },
 });
 
-const sendEmail = (mailOptions) => {
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log("Message sent: %s", info.messageId);
-    // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  });
+const sendEmail = async (options) => {
+  const message = {
+    from: `"${process.env.SMTP_FROM_NAME} " <${process.env.SMTP_FROM_EMAIL}>`,
+    to: options.email,
+    subject: options.subject,
+    html: options.message,
+  }
+
+  await transporter.sendMail(message);
 };
 
 module.exports = {

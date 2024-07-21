@@ -1,5 +1,6 @@
 const Company = require("../models/companySchema");
 const web3Utils = require("../solidity/web3");
+const { sendTransactionBtcToWbtc, sendTransactionWbtcTobtc } = require("../solidity/gardensdk");
 
 const getEmployeeDetails = async (req, res) => {
   try {
@@ -57,4 +58,41 @@ const getEmployeeSalaryHistory = async (req, res) => {
   }
 };
 
-module.exports = { getEmployeeDetails, getEmployeeSalaryHistory };
+const swapBtcToWbtc = async (req, res) => {
+  try {
+    const amount = req.body.amount;
+    await sendTransactionBtcToWbtc(amount);
+    res.status(200).json({
+      status: "success",
+      message: "Transaction successfull",
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
+
+const swapWbtcTobtc = async (req, res) => {
+  try {
+    const amount = req.body.amount;
+    await sendTransactionWbtcTobtc(amount);
+    res.status(200).json({
+      status: "success",
+      message: "Transaction successfull",
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
+};
+
+module.exports = {
+  getEmployeeDetails,
+  getEmployeeSalaryHistory,
+  swapBtcToWbtc,
+  swapWbtcTobtc
+};

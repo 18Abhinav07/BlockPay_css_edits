@@ -30,7 +30,7 @@ const checkBalance = async (req, res) => {
 
   res.status(200).json({
     status: "success",
-    message: `${balance} ether`,
+    data: `${balance} ether`,
   });
 };
 
