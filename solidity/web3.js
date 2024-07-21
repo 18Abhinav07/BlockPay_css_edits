@@ -1,12 +1,23 @@
 const fs = require("fs");
 const { Web3, eth } = require("web3");
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 const path = require("path");
 
-// const coreTestnetRpcUrl = "https://rpc.test.btcs.network";
-// const web3 = new Web3(new Web3.providers.HttpProvider(coreTestnetRpcUrl));
+const coreTestnetRpcUrl =
+  "https://polygon-zkevm-cardona.blockpi.network/v1/rpc/public";
 
-// Connect to a local Ethereum node
-const web3 = new Web3("http://127.0.0.1:7545"); // Change this to your Ethereum node address
+let web3;
+
+if (process.env.IS_PROD === "true") {
+  const provider = new HDWalletProvider(
+    process.env.MEMONICS,
+    coreTestnetRpcUrl
+  );
+  web3 = new Web3(provider);
+} else {
+  // Connect to a local Ethereum node
+  web3 = new Web3("http://127.0.0.1:7545");
+}
 
 // Read the compiled contract
 const contract = JSON.parse(
@@ -18,14 +29,16 @@ const deploy = async () => {
   const accounts = await web3.eth.getAccounts();
   console.log("Deploying the contract from account:", accounts[0]);
 
-  // Deploy the contract
   const blockpay = await new web3.eth.Contract(contract.abi)
     .deploy({
       data: "0x" + contract.evm.bytecode.object,
       arguments: [],
     })
-    .send({ from: accounts[0], gas: "3000000" });
-
+    .send({
+      from: accounts[0],
+      gas: "3000000",
+      gasPrice: "4000000000",
+    });
   return blockpay.options.address;
 };
 
@@ -35,9 +48,11 @@ const depositFunds = async (address, ether) => {
 
   const blockpay = new web3.eth.Contract(contract.abi, address);
 
-  await blockpay.methods
-    .depositFunds()
-    .send({ from: accounts[0], value: web3.utils.toWei(ether, "ether") });
+  await blockpay.methods.depositFunds().send({
+    from: accounts[0],
+    value: web3.utils.toWei(ether, "ether"),
+    gasPrice: "4000000000",
+  });
 };
 
 const checkBalance = async (address) => {
@@ -62,7 +77,7 @@ const addEmployee = async (
 
   await blockpay.methods
     .addEmployee(account, salary, payStartDate, payEndDate)
-    .send({ from: accounts[0], gas: 300000 });
+    .send({ from: accounts[0], gas: 300000, gasPrice: "4000000000" });
 };
 
 const getEmployeeDetails = async (address, account) => {
@@ -78,7 +93,7 @@ const removeEmployee = async (address, account) => {
 
   await blockpay.methods
     .removeEmployee(account)
-    .send({ from: accounts[0], gas: 300000 });
+    .send({ from: accounts[0], gas: 300000, gasPrice: "4000000000" });
 };
 
 const updateEmployee = async (
@@ -95,7 +110,7 @@ const updateEmployee = async (
 
   await blockpay.methods
     .updateEmployee(account, salary, payStartDate, payEndDate)
-    .send({ from: accounts[0], gas: 300000 });
+    .send({ from: accounts[0], gas: 300000, gasPrice: "4000000000" });
 };
 
 const payAllEmployees = async (address) => {
@@ -104,7 +119,7 @@ const payAllEmployees = async (address) => {
 
   await blockpay.methods
     .payAllEmployees()
-    .send({ from: accounts[0], gas: 300000 });
+    .send({ from: accounts[0], gas: 300000, gasPrice: "4000000000" });
 };
 
 const getHistory = async (address, account) => {
