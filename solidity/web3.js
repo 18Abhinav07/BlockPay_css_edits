@@ -16,6 +16,7 @@ if (process.env.IS_PROD === "true") {
   web3 = new Web3(provider);
 } else {
   // Connect to a local Ethereum node
+  console.log("Connected to local ganache");
   web3 = new Web3("http://127.0.0.1:7545");
 }
 

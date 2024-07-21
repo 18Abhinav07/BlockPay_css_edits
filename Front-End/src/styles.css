@@ -1,0 +1,616 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    171.64deg,
+    #021011 -16.83%,
+    #072d30 3.91%,
+    #031f21 12.31%,
+    #062e31 17.1%,
+    #052729 24.01%,
+    #093033 33.13%,
+    #093336 42.3%,
+    #092224 53.35%,
+    #082426 56.87%,
+    #06292c 59.89%,
+    #072f32 68.07%,
+    #09393d 73.87%,
+    #0a393d 76.31%,
+    #042528 91.33%
+  );
+  color: #ffffff;
+}
+
+.apphome {
+  font-family: "Arial", sans-serif;
+}
+
+/* Header Styles */
+headerhome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logohome {
+  font-size: 24px;
+  font-weight: bold;
+  animation: fadeInDown 1s ease-in-out;
+  cursor: pointer;
+}
+
+headerhome nav ul {
+  display: flex;
+  list-style: none;
+}
+
+headerhome nav ul li {
+  margin-right: 20px;
+}
+
+headerhome nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+headerhome nav ul li a:hover {
+  color: #ff4136;
+}
+
+headerhome .auth-linkshome a {
+  margin-left: 20px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+headerhome .auth-linkshome .register-btnhome {
+  background-color: #ff4136;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+headerhome .auth-linkshome .register-btnhome:hover {
+  background-color: #ff6347;
+}
+
+@media (max-width: 768px) {
+  headerhome .logohome {
+    font-size: 20px;
+  }
+
+  headerhome nav ul li {
+    margin-right: 10px;
+  }
+
+  headerhome .auth-linkshome a {
+    margin-left: 10px;
+  }
+
+  headerhome .auth-linkshome .register-btnhome {
+    padding: 8px 16px;
+  }
+}
+
+/* Hero Section Styles */
+.hero-sectionhome {
+  text-align: left;
+  padding: 50px 20px;
+  flex: 1;
+}
+
+.hero-sectionhome h1 {
+  font-size: 64px;
+  margin: 0;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.hero-sectionhome h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 24px;
+  margin-top: 20px;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+.hero-sectionhome p {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  animation: fadeInUp 1.4s ease-in-out;
+}
+
+.hero-sectionhome .get-started-btnhome {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #34c759;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-sectionhome .get-started-btnhome:hover {
+  background-color: #32cd32;
+}
+
+.Herobabyhome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.globe-divhome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex: 1;
+}
+
+.globehome {
+  max-width: 80%;
+  height: auto;
+  margin-left: 20px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .Herobabyhome {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .hero-sectionhome {
+    text-align: left;
+    padding: 50px;
+  }
+
+  .globe-divhome {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-sectionhome h1 {
+    font-size: 48px;
+  }
+
+  .hero-sectionhome h2 {
+    font-size: 20px;
+  }
+
+  .hero-sectionhome p {
+    font-size: 14px;
+  }
+
+  .hero-sectionhome .get-started-btnhome {
+    padding: 8px 16px;
+  }
+
+  .globehome {
+    max-width: 60%;
+  }
+}
+
+.video-sectionhome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0;
+}
+
+.video-sectionhome h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.video-sectionhome iframe {
+  margin-left: 50px;
+  margin-right: 50px;
+  width: 80%;
+  max-width: 800px;
+  height: 450px;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .video-sectionhome iframe {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Reform Section Styles */
+.reform-sectionhome {
+  text-align: center;
+  padding: 50px 20px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.reform-sectionhome .stepshome {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.reform-sectionhome .stephome {
+  background-color: #ffffff;
+  color: #2ecc40;
+  padding: 20px;
+
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+.connectorRhome {
+  margin-top: 70px;
+}
+
+/* Features Section Styles */
+.features-sectionhome {
+  text-align: right;
+  padding: 50px 20px;
+  margin-bottom: 50px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.features-sectionhome ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features-sectionhome ul li {
+  margin: 49px 0;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+/* Cross-Border Payments Section Styles */
+.cross-border-payments-sectionhome {
+  text-align: center;
+  padding: 50px 20px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.cross-border-payments-sectionhome {
+  background-color: ;
+  width: 100%;
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid; /* Set the border width */
+  border-image: linear-gradient(to right, #3498db, #8e44ab) 1; /* Create a gradient border */
+  border-radius: 10px; /* Rounds the corners of the border */
+  box-sizing: border-box;
+}
+
+.cross-border-payments-sectionhome h2 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 45px;
+  margin: 20px 0 20px;
+  text-align: center;
+}
+
+.world-maphome {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+#map-imghome {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@media (min-width: 1024px) {
+  .cross-border-payments-sectionhome {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* Ready To Get Started Section Styles */
+.ready-to-get-started-sectionhome {
+  text-align: center;
+  padding: 50px 20px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.ready-to-get-started-sectionhome h2 {
+  margin: 0;
+}
+
+.ready-to-get-started-sectionhome button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ready-to-get-started-sectionhome button:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .ready-to-get-started-sectionhome button {
+    padding: 8px 16px;
+  }
+}
+
+/* FAQ Section Styles */
+/* FAQ Section Styles */
+.faq-sectionhome {
+  text-align: left;
+  padding: 50px 20px;
+  width: 80%;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.faq-sectionhome h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.faq-questionhome {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+/* Remove this pseudo-element to avoid duplicate '+' signs */
+/* .faq-questionhome:after {
+  content: "+";
+  font-size: 24px;
+  color: #3498db;
+} */
+
+.faq-answerhome {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1.4s ease-in-out;
+}
+
+.faq-answerhome hr {
+  border: none;
+  height: 1px;
+  margin: 10px 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ready To Get Started Section Styles */
+.ready-to-get-started-sectionhome {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.ready-to-get-started-sectionhome .cardshome {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ready-to-get-started-sectionhome .cardhome {
+  background-color: #ffffff;
+  color: #001f3f;
+  padding: 20px;
+  margin: 0 10px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.ready-to-get-started-sectionhome .cardhome h3 {
+  margin-top: 0;
+}
+
+.ready-to-get-started-sectionhome .get-started-btnhome,
+.ready-to-get-started-sectionhome .learn-more-btnhome {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.ready-to-get-started-sectionhome .get-started-btnhome {
+  background-color: #0074d9;
+}
+
+.ready-to-get-started-sectionhome .learn-more-btnhome {
+  background-color: #0074d9;
+}
+
+.footerhome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.footerhome nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+
+.footerhome .socialshome a {
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footerhome .logohome {
+  align-self: flex-start;
+}
+
+.copyrighthome {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.faqs-sectionhome {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  align-items: left; /* Align the FAQ section to the left */
+}
+
+.faqs-sectionhome h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.faqs-sectionhome ul {
+  list-style: none;
+  padding: 0;
+}
+
+.faqs-sectionhome li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.faq-questionhome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items vertically in the center */
+  cursor: pointer;
+}
+
+.faq-questionhome h3 {
+  margin: 0;
+  flex-grow: 1; /* Allow the question text to take available space */
+}
+
+.toggle-iconhome {
+  font-size: 24px;
+  line-height: 24px;
+  color: white; /* Set the color of the toggle icon to white */
+}
+
+.social-iconshome {
+  width: 30px;
+  margin-right: 20px;
+}
+
+.Xhome {
+  width: 58px;
+  margin-top: 100px;
+}
+
+.faqs-sectionhome p {
+  margin: 10px 0 0;
+  padding: 0 20px;
+}
+
+.document-center {
+  background-color: #eff2f41a;
+  font-size: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 500px;
+  overflow-y: scroll;
+  /* Allow scrolling */
+}
+
+.documents-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.document-icon {
+  height: auto;
+  width: 15%;
+}
+
+.document-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+
+.swap-icon {
+  margin: 10px 0;
+  font-size: 24px;
+  cursor: pointer;
+  color: navajowhite;
+  padding-bottom: 10px;
+}
+
+.recieve-address {
+  margin-top: 15px;
+  margin-bottom: 23px;
+}
+
+.alert {
+  margin-top: 15px;
+}
