@@ -20,6 +20,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Alert from "@mui/material/Alert";
 import LinearProgress from "@mui/material/LinearProgress";
+import { TransitionProps } from "@mui/material/transitions";
+import Slide from "@mui/material/Slide";
 import Emp1 from "../icons/emp1.svg";
 import Emp2 from "../icons/emp2.svg";
 import Emp3 from "../icons/emp3.svg";
@@ -57,6 +59,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../utils/sidebarClick";
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const MainContent = ({ logo, children }) => {
   const navigate = useNavigate();
   const [balance, setBalance] = useState("0 ether");
@@ -66,9 +72,10 @@ const MainContent = ({ logo, children }) => {
   const [errorMsg, setErrorMsg] = useState(null);
 
   const [open, setOpen] = React.useState(false);
+  const [openPay, setOpenPay] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handlePayClose = () => {
+    setOpenPay(false);
   };
 
   const handleClose = () => {
@@ -140,12 +147,13 @@ const MainContent = ({ logo, children }) => {
       }
     } catch (err) {
       setDepositProgress(false);
-      console.log("Finance error");
+      alert("Insufficient funds");
     }
   };
 
   const payEmployees = async () => {
     try {
+      setProgress(true);
       const url = `${domain}/admin/pay-salary`;
       const token = localStorage.getItem("token");
 
@@ -159,6 +167,7 @@ const MainContent = ({ logo, children }) => {
         }
       );
 
+      setOpenPay(true);
       checkBalance();
       setProgress(false);
     } catch (err) {
@@ -225,9 +234,9 @@ const MainContent = ({ logo, children }) => {
                     const formData = new FormData(event.currentTarget);
                     const formJson = Object.fromEntries(formData.entries());
                     const amount = formJson.amount;
-                    setProgress(true);
+                    //setProgress(true);
                     await depositFunds(amount);
-                    
+
                     handleClose();
                   },
                 }}
@@ -547,6 +556,25 @@ const MainContent = ({ logo, children }) => {
             </section>
           </div>
           <div>
+            <Dialog
+              open={openPay}
+              TransitionComponent={Transition}
+              keepMounted
+              onClose={handlePayClose}
+              aria-describedby="alert-dialog-slide-description"
+            >
+              <DialogTitle>{"Salary Payment Successful"}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-slide-description">
+                  The salaries for all employees have been processed and paid
+                  successfully. Each employee has received their due
+                  compensation for the current pay period.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handlePayClose}>Continue</Button>
+              </DialogActions>
+            </Dialog>
             {progress ? (
               <>
                 <LinearProgress></LinearProgress>

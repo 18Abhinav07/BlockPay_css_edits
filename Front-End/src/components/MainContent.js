@@ -226,7 +226,10 @@ const MainContent = ({ logo, children, salaries, salary, account }) => {
             </div>
           </div>
         </div>
-        <DocumentsCenter></DocumentsCenter>
+        <DocumentsCenter
+          salaries={salaries}
+          account={account}
+        ></DocumentsCenter>
         <TransactionHistory
           salaries={salaries}
           account={account}

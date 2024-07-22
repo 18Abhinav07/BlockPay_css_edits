@@ -37,7 +37,7 @@ const HrDashboard = () => {
     };
 
     fetchTotalSalary();
-  });
+  }, []);
   const handleItemClick = (item) => {
     sidebarClick(item, setSelected, navigate);
   };

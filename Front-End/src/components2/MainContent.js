@@ -11,6 +11,9 @@ import professionalInfoIcon from "../icons/professionalinfo.svg";
 import documentsIcon from "../icons/documents.svg";
 import accountAccessIcon from "../icons/accountaccess.svg";
 import Dp from "../icons/Dp.svg";
+import Emp1 from "../icons/emp1.svg";
+import Emp2 from "../icons/emp2.svg";
+import Emp3 from "../icons/emp3.svg";
 
 import settingsIcon from "../icons/settings.svg";
 import notificationIcon from "../icons/notification.svg";
@@ -37,6 +40,15 @@ const MainContent = ({ employee }) => {
 
   const handleEditClick = () => {
     setIsEditing(true);
+  };
+
+  const getRandomImage = (account) => {
+    const lastChar = account.charAt(account.length - 1);
+    if (isNaN(lastChar)) return Emp1;
+
+    const num = Number(lastChar);
+
+    return num % 2 == 0 ? Emp2 : Emp3;
   };
 
   const handleSaveClick = async () => {
@@ -140,7 +152,7 @@ const MainContent = ({ employee }) => {
       </div>
       <div className="main-contentsUpdateE">
         <div className="profile-headerUpdateE">
-          <img src={Dp} alt="Profile" className="profile-imgUpdateE" />
+          <img src={getRandomImage(employee.account)} alt="Profile" className="profile-imgUpdateE" />
           <div className="profile-infoUpdateE">
             <h2>{employee.name}</h2>
             <br />

@@ -18,7 +18,7 @@ const RegisterCompany = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const navigate = useNavigate();
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [userRole, setUserRole] = useState("Employee");
+  const [userRole, setUserRole] = useState("Employer");
   const [progress, setProgress] = useState(false);
 
   const handleInputChange = (event) => {

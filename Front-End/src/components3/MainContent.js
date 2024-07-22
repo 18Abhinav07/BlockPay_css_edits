@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import domain from "../domain";
 import axios from "axios";
 import { logout } from "../utils/sidebarClick";
+import getRandomInt from "../utils/randomno";
 
 const MainContent = ({ logo, children }) => {
   const navigate = useNavigate();
@@ -35,6 +36,15 @@ const MainContent = ({ logo, children }) => {
 
   const addEmployee = () => {
     navigate("/add-employee");
+  };
+
+  const getRandomImage = (account) => {
+    const lastChar = account.charAt(account.length - 1);
+    if (isNaN(lastChar)) return Emp1;
+
+    const num = Number(lastChar);
+
+    return num % 2 == 0 ? Emp2 : Emp3;
   };
 
   const getAllEmployees = async () => {
@@ -77,11 +87,13 @@ const MainContent = ({ logo, children }) => {
 
   useEffect(() => {
     getAllEmployees();
-  });
+  }, []);
   return (
     <main className="main-content">
       <header className="main-header">
-        <div className="logohome" onClick={() => navigate("/")}>BlockPay</div>
+        <div className="logohome" onClick={() => navigate("/")}>
+          BlockPay
+        </div>
         <div className="user-profile">
           <img
             src={settingsIcon}
@@ -133,7 +145,11 @@ const MainContent = ({ logo, children }) => {
             {employees.map((employee, index) => (
               <tr key={index}>
                 <td>
-                  <img src={Emp1} alt="Employee" className="employee-image" />
+                  <img
+                    src={getRandomImage(employee.account)}
+                    alt="Employee"
+                    className="employee-image"
+                  />
                   {employee.name}
                 </td>
                 <td>{employee.account}</td>
