@@ -47,7 +47,8 @@ efficiently.
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/blockpay.git cd blockpay
+git clone https://github.com/sahil58555/BlockPay.git 
+cd blockpay
 ```
 
 2. **Configure environment variables**
@@ -62,13 +63,21 @@ IS_PROD=false
 ```
 
 3. **Start backend server**
-   `bash npm install `
-   `bash npm start `
+
+```
+bash
+npm install
+npm start
+```
 
 4. **Start Frontend**
-   `bash cd Front-end `
-   `bash npm install `
-   `bash npm start `
+
+```
+bash
+cd Front-end
+npm install
+npm start
+```
 
 5. **Access the application**
    Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -78,19 +87,36 @@ IS_PROD=false
 We welcome contributions from the community! To contribute:
 
 1. **Fork the repository**
-2. **Create a new branch** (`git checkout -b feature/your-feature`) 3.
-   **Commit your changes** (`git commit -m 'Add your feature'`) 4. **Push
-   to the branch** (`git push origin feature/your-feature`)
-3. **Create a Pull Request**
+2. **Create a new branch** (`git checkout -b feature/your-feature`)
+3. **Commit your changes** (`git commit -m 'Add your feature'`)
+4. **Push to the branch** (`git push origin feature/your-feature`)
+5. **Create a Pull Request**
 
 ## Screenshots
 
 ![Register Page](Screenshots/Register.png)
+
+**Figure 1:** Register Page
+
 ![Login Page](Screenshots/Login.png)
+
+**Figure 2:** Login Page
+
 ![HR Dashboard Page](Screenshots/Hr.png)
+
+**Figure 3:** RegisHR Dashboardter Page
+
 ![Add Employee Page](Screenshots/Add.png)
+
+**Figure 4:** Add Employee Page
+
 ![Finance Page](Screenshots/Finance.png)
+
+**Figure 5:** Finance Page
+
 ![Employee Dashboard Page](Screenshots/employee.png)
+
+**Figure 6:** Employee Dashboard Page
 
 ## License
 
@@ -108,7 +134,3 @@ This project is licensed under the MIT License - see the [LICENSE]
 
 For any inquiries or questions, please contact us at
 [contact@blockpay.com] (mailto:contact@blockpay.com)
-
-```
-
-```
