@@ -2,8 +2,10 @@ import React from "react";
 import "../styles.css";
 import Employer from "./images/employer.png";
 import Employee from "./images/employee.png";
+import { useNavigate } from "react-router-dom";
 
 const ReadyToGetStartedSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="ready-to-get-started-sectionhome">
       <h2>Ready To Get Started?</h2>
@@ -16,7 +18,12 @@ const ReadyToGetStartedSection = () => {
             Enjoy real-time transactions, immutable records, and effortless
             compliance.
           </p>
-          <button className="get-started-btnhome">Get Started</button>
+          <button
+            className="get-started-btnhome"
+            onClick={() => navigate("/login")}
+          >
+            Get Started
+          </button>
         </div>
         <div className="cardhome">
           <br />
@@ -26,7 +33,12 @@ const ReadyToGetStartedSection = () => {
             Enjoy real-time transactions, immutable records, and effortless
             compliance.
           </p>
-          <button className="learn-more-btnhome">Learn More</button>
+          <button
+            className="learn-more-btnhome"
+            onClick={() => navigate("/about-us")}
+          >
+            Learn More
+          </button>
         </div>
       </div>
     </section>

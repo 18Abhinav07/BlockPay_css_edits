@@ -62,7 +62,7 @@ const RegisterCompany = () => {
       });
       const data = res.data;
       setProgress(false);
-      
+
       // TODO
       if (data.token) {
         localStorage.setItem("token", data.token);

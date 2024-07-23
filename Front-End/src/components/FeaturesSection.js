@@ -4,29 +4,7 @@ import "../styles.css";
 const FeaturesSection = () => {
   return (
     <section className="features-sectionhome">
-      <h2>The Only Payroll Platform You Will Ever Need</h2>
-      <ul>
-        <li>
-          Enjoy real-time transactions, immutable records, and effortless
-          compliance.
-        </li>
-        <li>
-          Enjoy real-time transactions, immutable records, and effortless
-          compliance.
-        </li>
-        <li>
-          Enjoy real-time transactions, immutable records, and effortless
-          compliance.
-        </li>
-        <li>
-          Enjoy real-time transactions, immutable records, and effortless
-          compliance.
-        </li>
-        <li>
-          Enjoy real-time transactions, immutable records, and effortless
-          compliance.
-        </li>
-      </ul>
+      <h1>The Only Payroll Platform You Will Ever Need</h1>
     </section>
   );
 };

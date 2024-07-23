@@ -5,10 +5,14 @@ import HeroSection from "./components/HeroSection";
 import VideoSection from "./components/VideoSection";
 import ReformSection from "./components/ReformSection";
 import FeaturesSection from "./components/FeaturesSection";
+import Advantages from "./components/Advantages";
 import CrossBorderPaymentsSection from "./components/CrossBorderPaymentsSection";
 import ReadyToGetStartedSection from "./components/ReadyToGetStartedSection";
 import FAQsSection from "./components/FAQsSection";
 import Footer from "./components/Footer";
+import Aboutus from "./components/Aboutus";
+import Features from "./components/Features";
+import Contactus from "./components/ContactUs";
 import { Routes, Route } from "react-router-dom";
 import HrDashboard from "./hr_onboard";
 import EmployeeDashboard from "./employee_dashboard";
@@ -32,8 +36,8 @@ const App = () => {
               <Header />
               <HeroSection />
               <VideoSection />
-              <ReformSection />
               <FeaturesSection />
+              <Advantages />
               <CrossBorderPaymentsSection />
               <ReadyToGetStartedSection />
               <FAQsSection />
@@ -41,6 +45,10 @@ const App = () => {
             </div>
           }
         />
+        <Route path="/about-us" element={<Aboutus />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/contact-us" element={<Contactus />} />
+
         <Route path="/hr-dashboard" element={<HrDashboard />} />
         <Route
           path="/admin-employee-section"

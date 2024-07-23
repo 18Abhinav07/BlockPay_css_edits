@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import image5 from "./images/logoblockpay.svg";
 
 const Header = () => {
   return (
     <headerhome>
-      <div className="logohome">BlockPay</div>
+      <div className="logohome">
+        <img src={image5} alt="Logo" />
+      </div>
       <nav>
         <ul>
           <li>
-            <a href="#about">About</a>
+            <Link to="/about-us">About</Link>
           </li>
           <li>
-            <a href="#features">Features</a>
+            <Link to="/features">Features</Link>
           </li>
           <li>
-            <a href="#updates">Contact us</a>
+            <Link to="/contact-us">Contact us</Link>
           </li>
         </ul>
       </nav>

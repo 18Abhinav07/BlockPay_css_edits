@@ -1,25 +1,13 @@
 /* General Styles */
 body {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  top: 2rem;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(
-    171.64deg,
-    #021011 -16.83%,
-    #072d30 3.91%,
-    #031f21 12.31%,
-    #062e31 17.1%,
-    #052729 24.01%,
-    #093033 33.13%,
-    #093336 42.3%,
-    #092224 53.35%,
-    #082426 56.87%,
-    #06292c 59.89%,
-    #072f32 68.07%,
-    #09393d 73.87%,
-    #0a393d 76.31%,
-    #042528 91.33%
-  );
+  background: linear-gradient(135deg, #0e1520 10%, #131b2b 50%, #182335 100%);
   color: #ffffff;
 }
 
@@ -39,7 +27,6 @@ headerhome {
   font-size: 24px;
   font-weight: bold;
   animation: fadeInDown 1s ease-in-out;
-  cursor: pointer;
 }
 
 headerhome nav ul {
@@ -98,9 +85,12 @@ headerhome .auth-linkshome .register-btnhome:hover {
 
 /* Hero Section Styles */
 .hero-sectionhome {
-  text-align: left;
+  text-align: center;
   padding: 50px 20px;
   flex: 1;
+  position: relative;
+  /* background: url("./components/images/earth-new.jpg") no-repeat center center;  */
+  background-size: cover;
 }
 
 .hero-sectionhome h1 {
@@ -147,36 +137,18 @@ headerhome .auth-linkshome .register-btnhome:hover {
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
-}
-
-.globe-divhome {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  flex: 1;
-}
-
-.globehome {
-  max-width: 80%;
-  height: auto;
-  margin-left: 20px;
-  animation: fadeIn 2s ease-in-out;
+  position: relative;
 }
 
 @media (min-width: 768px) {
   .Herobabyhome {
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-sectionhome {
-    text-align: left;
+    text-align: center;
     padding: 50px;
-  }
-
-  .globe-divhome {
-    margin-top: 0;
   }
 }
 
@@ -196,10 +168,12 @@ headerhome .auth-linkshome .register-btnhome:hover {
   .hero-sectionhome .get-started-btnhome {
     padding: 8px 16px;
   }
+}
 
-  .globehome {
-    max-width: 60%;
-  }
+/* Commented out background image positioning for adjustment */
+.hero-sectionhome {
+  background-position: center; /* Adjust as needed */
+  /* background-position: top right; Example adjustment */
 }
 
 .video-sectionhome {
@@ -209,6 +183,9 @@ headerhome .auth-linkshome .register-btnhome:hover {
   justify-content: center;
   text-align: center;
   margin: 50px 0;
+  background: url("./components/images/earth-new.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 150vh;
 }
 
 .video-sectionhome h2 {
@@ -264,7 +241,7 @@ headerhome .auth-linkshome .register-btnhome:hover {
 
 /* Features Section Styles */
 .features-sectionhome {
-  text-align: right;
+  text-align: center;
   padding: 50px 20px;
   margin-bottom: 50px;
   animation: fadeInUp 1s ease-in-out;
@@ -389,13 +366,6 @@ headerhome .auth-linkshome .register-btnhome:hover {
   animation: fadeInUp 1.2s ease-in-out;
 }
 
-/* Remove this pseudo-element to avoid duplicate '+' signs */
-/* .faq-questionhome:after {
-  content: "+";
-  font-size: 24px;
-  color: #3498db;
-} */
-
 .faq-answerhome {
   display: none;
   margin-top: 10px;
@@ -502,7 +472,6 @@ headerhome .auth-linkshome .register-btnhome:hover {
 }
 
 .footerhome .socialshome a {
-  margin: 0 10px;
   text-decoration: none;
 }
 
@@ -569,6 +538,60 @@ headerhome .auth-linkshome .register-btnhome:hover {
 .faqs-sectionhome p {
   margin: 10px 0 0;
   padding: 0 20px;
+}
+
+.advantages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 200px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.card {
+  background: rgba(239, 242, 244, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #00aaff;
+}
+
+.image-container {
+  border-radius: 50%;
+  padding: 10px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  width: 50px;
+  height: 50px;
+}
+
+.card h3 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29.05px;
+  text-align: center;
 }
 
 .document-center {
