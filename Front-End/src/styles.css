@@ -7,7 +7,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #0e1520 10%, #131b2b 50%, #182335 100%);
+  background: #000;
   color: #ffffff;
 }
 
@@ -55,14 +55,16 @@ headerhome .auth-linkshome a {
 }
 
 headerhome .auth-linkshome .register-btnhome {
-  background-color: #ff4136;
+  background-color: #000;
+  border: 1px solid #00aaff;
+
   padding: 10px 20px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
 headerhome .auth-linkshome .register-btnhome:hover {
-  background-color: #ff6347;
+  background-color: #32cd32;
 }
 
 @media (max-width: 768px) {
@@ -88,27 +90,27 @@ headerhome .auth-linkshome .register-btnhome:hover {
   text-align: center;
   padding: 50px 20px;
   flex: 1;
+  width: 100%;
   position: relative;
-  /* background: url("./components/images/earth-new.jpg") no-repeat center center;  */
-  background-size: cover;
+  background: none;
 }
 
 .hero-sectionhome h1 {
-  font-size: 64px;
+  font-size: 36px; /* Adjust font size */
   margin: 0;
   animation: fadeInUp 1s ease-in-out;
 }
 
 .hero-sectionhome h2 {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 24px;
+  font-size: 18px; /* Adjust font size */
   margin-top: 20px;
   animation: fadeInUp 1.2s ease-in-out;
 }
 
 .hero-sectionhome p {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px; /* Adjust font size */
   line-height: 1.6;
   animation: fadeInUp 1.4s ease-in-out;
 }
@@ -116,7 +118,7 @@ headerhome .auth-linkshome .register-btnhome:hover {
 .hero-sectionhome .get-started-btnhome {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #34c759;
+  background-color: #18ffff;
   border: none;
   border-radius: 5px;
   color: #ffffff;
@@ -138,6 +140,17 @@ headerhome .auth-linkshome .register-btnhome:hover {
   padding: 20px;
   box-sizing: border-box;
   position: relative;
+  min-height: 100vh;
+  background-color: #000;
+}
+
+.top-globe {
+  width: 100%;
+  max-width: 1200px;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media (min-width: 768px) {
@@ -154,50 +167,44 @@ headerhome .auth-linkshome .register-btnhome:hover {
 
 @media (max-width: 768px) {
   .hero-sectionhome h1 {
-    font-size: 48px;
+    font-size: 32px;
   }
 
   .hero-sectionhome h2 {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .hero-sectionhome p {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .hero-sectionhome .get-started-btnhome {
     padding: 8px 16px;
   }
+
+  .top-globe {
+    width: 100%;
+  }
 }
 
-/* Commented out background image positioning for adjustment */
-.hero-sectionhome {
-  background-position: center; /* Adjust as needed */
-  /* background-position: top right; Example adjustment */
-}
-
+/* Video Section Styles */
 .video-sectionhome {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin: 50px 0;
-  background: url("./components/images/earth-new.jpg") no-repeat center center;
-  background-size: cover;
-  min-height: 150vh;
+  position: relative;
+  bottom: 64px;
 }
 
 .video-sectionhome h2 {
-  margin-bottom: 20px;
   font-size: 2rem;
 }
 
 .video-sectionhome iframe {
-  margin-left: 50px;
-  margin-right: 50px;
-  width: 80%;
-  max-width: 800px;
+  width: 100%;
+  max-width: 1100px;
   height: 450px;
   border: none;
 }
@@ -206,6 +213,79 @@ headerhome .auth-linkshome .register-btnhome:hover {
   .video-sectionhome iframe {
     width: 100%;
     height: auto;
+  }
+}
+
+/* Bottom Section Styles */
+.bottom-sectionhome {
+  position: relative;
+  text-align: center;
+  margin-top: -50px; /* Adjust the margin to move the section up */
+}
+
+.bottom-globe {
+  width: 100%;
+  max-width: 1200px;
+  transform: rotate(180deg); /* Rotate the globe upside down */
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.bottom-text {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-top: 200px;
+}
+
+.bottom-text h2 {
+  font-size: 36px;
+  text-align: left;
+  font-weight: 700;
+  margin: 0;
+  width: 739px;
+  font: Inter;
+}
+
+.bottom-text h4 {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: right;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .bottom-text {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bottom-text h2,
+  .bottom-text h4 {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .bottom-text h2 {
+    font-family: Inter;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 77.45px;
+    text-align: left;
+  }
+
+  .bottom-text h4 {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 43.57px;
+    text-align: right;
   }
 }
 
@@ -427,8 +507,8 @@ headerhome .auth-linkshome .register-btnhome:hover {
 }
 
 .ready-to-get-started-sectionhome .cardhome {
-  background-color: #ffffff;
-  color: #001f3f;
+  background-color: rgba(239, 242, 244, 0.1);
+  color: #ffffff;
   padding: 20px;
   margin: 0 10px;
   border-radius: 10px;
@@ -546,6 +626,7 @@ headerhome .auth-linkshome .register-btnhome:hover {
   gap: 20px;
   padding: 20px;
   margin-bottom: 200px;
+  margin-top: 400px;
 }
 
 .row {
@@ -593,6 +674,7 @@ headerhome .auth-linkshome .register-btnhome:hover {
   line-height: 29.05px;
   text-align: center;
 }
+
 
 .document-center {
   background-color: #eff2f41a;

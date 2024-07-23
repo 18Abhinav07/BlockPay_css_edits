@@ -53,7 +53,7 @@ const Advantages = () => {
           <div className="image-container">
             <img src={image6} alt="Payroll Handling Icon" />
           </div>
-          <h3>Improved Work Efficiency With No Payment Headaches</h3>
+          <h3>Real-time Reporting and Analytics</h3>
         </div>
       </div>
     </section>

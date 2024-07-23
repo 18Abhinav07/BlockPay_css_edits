@@ -35,7 +35,6 @@ const App = () => {
             <div>
               <Header />
               <HeroSection />
-              <VideoSection />
               <FeaturesSection />
               <Advantages />
               <CrossBorderPaymentsSection />

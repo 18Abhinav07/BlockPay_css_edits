@@ -1,27 +1,45 @@
 import React from "react";
-import "../styles.css"; // Make sure the correct path is used
-import globe from "./images/backglobeimg.png"; // Path to your image
+import "../styles.css";
+import globe from "./images/backglobe.svg"; // Path to your image
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const navigate = useNavigate();
   return (
-    <div className="Herobabyhome">
-      <div className="hero-sectionhome">
-        <h1>EMPOWER YOUR PAYROLL WITH BLOCKCHAIN</h1>
-        <h2>Unleashing future of payroll system</h2>
-        <p>
-          Simplify your payroll process with our decentralized solution. Enjoy
-          real-time transactions, immutable records, and effortless compliance,
-          all while empowering your workforce with transparent and timely
-          payments.
-        </p>
-        <button
-          className="get-started-btnhome"
-          onClick={() => navigate("/register")}
-        >
-          Get Started
-        </button>
+    <div>
+      <div className="Herobabyhome">
+        <img className="top-globe" src={globe} alt="Globe" />
+        <div className="hero-sectionhome">
+          <h1>INFINITE PAY POSSIBILITIES</h1>
+          <h2>with Blockchain Precision</h2>
+          <p>
+            Simplify your payroll process with our decentralized solution. Enjoy
+            real-time transactions, immutable records, and effortless
+            compliance, all while empowering your workforce with transparent and
+            timely payments.
+          </p>
+          <button
+            className="get-started-btnhome"
+            onClick={() => navigate("/register")}
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+      <div className="video-sectionhome">
+        <iframe
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+      <div className="bottom-sectionhome">
+        <img className="bottom-globe" src={globe} alt="Globe" />
+        <div className="bottom-text">
+          <h2>The Only Payroll Platform You Will Ever Need</h2>
+          <h4>Everything you need is in your hands</h4>
+        </div>
       </div>
     </div>
   );

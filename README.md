@@ -24,7 +24,7 @@ efficiently.
 
 - **Global Payouts in One Click**: Pay your entire global workforce in a
   single transaction.
-- **Cost Reduction **: Reduce costs associated with international bank
+- **Cost Reduction**: Reduce costs associated with international bank
   transfers and eliminate third-party payroll services.
 - **Automation Compliance**: Automate payroll processes to ensure
   compliance with minimal human interference.
@@ -65,7 +65,6 @@ IS_PROD=false
 3. **Start backend server**
 
 ```
-bash
 npm install
 npm start
 ```
@@ -73,7 +72,6 @@ npm start
 4. **Start Frontend**
 
 ```
-bash
 cd Front-end
 npm install
 npm start
@@ -104,7 +102,7 @@ We welcome contributions from the community! To contribute:
 
 ![HR Dashboard Page](Screenshots/Hr.png)
 
-**Figure 3:** RegisHR Dashboardter Page
+**Figure 3:** HR Dashboard Page
 
 ![Add Employee Page](Screenshots/Add.png)
 
