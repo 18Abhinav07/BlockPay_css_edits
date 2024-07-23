@@ -3,8 +3,10 @@ import facebook from "../components/images/Facebook.png";
 import Instagram from "../components/images/Instagram.png";
 import X from "../components/images/X.png";
 import Linkedin from "../components/images/Linkedin.png";
+import { useNavigate } from "react-router-dom";
 
 const Aboutus = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <style>
@@ -142,7 +144,9 @@ background: linear-gradient(135deg, #0e1520 10%, #131b2b 50%, #182335 100%);
       </style>
       <div className="about-page">
         <header className="header">
-          <button className="backtohome">Home</button>
+          <button className="backtohome" onClick={() => navigate("/")}>
+            Home
+          </button>
           <h1 className="header-title">About Blockpay</h1>
         </header>
         <section className="content">
@@ -218,10 +222,10 @@ background: linear-gradient(135deg, #0e1520 10%, #131b2b 50%, #182335 100%);
           <div className="logohome">BlockPay</div>
 
           <nav>
-            <a href="#features">Features</a>
+            <a href="/features">Features</a>
             <br />
             <br />
-            <a href="#updates">Contact us</a>
+            <a href="/contact-us">Contact us</a>
           </nav>
           <div className="socialshome">
             Let's get social:

@@ -37,8 +37,12 @@ const HeroSection = () => {
       <div className="bottom-sectionhome">
         <img className="bottom-globe" src={globe} alt="Globe" />
         <div className="bottom-text">
-          <h2>The Only Payroll Platform You Will Ever Need</h2>
-          <h4>Everything you need is in your hands</h4>
+          <h2 style={{ width: "550px" }}>
+            The Only Payroll Platform You Will Ever Need
+          </h2>
+          <h4 style={{ width: "550px", width: "263px" }}>
+            Everything you need right is in your hands
+          </h4>
         </div>
       </div>
     </div>

@@ -241,7 +241,9 @@ headerhome .auth-linkshome .register-btnhome:hover {
   justify-content: space-between;
   padding: 0 20px;
   box-sizing: border-box;
-  margin-top: 200px;
+  margin-top: 350px;
+  padding-right: 50px;
+  padding-left: 50px;
 }
 
 .bottom-text h2 {
@@ -254,7 +256,7 @@ headerhome .auth-linkshome .register-btnhome:hover {
 }
 
 .bottom-text h4 {
-  font-size: 18px;
+  font-size: 23px;
   font-weight: 400;
   text-align: right;
   margin: 0;

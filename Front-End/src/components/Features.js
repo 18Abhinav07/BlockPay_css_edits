@@ -3,8 +3,10 @@ import facebook from "../components/images/Facebook.png";
 import Instagram from "../components/images/Instagram.png";
 import X from "../components/images/X.png";
 import Linkedin from "../components/images/Linkedin.png";
+import { useNavigate } from "react-router-dom";
 
 const Features = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <style>
@@ -126,7 +128,9 @@ const Features = () => {
         `}
       </style>
       <div className="features-page">
-        <button className="backtohome">Home</button>
+        <button className="backtohome" onClick={() => navigate("/")}>
+          Home
+        </button>
 
         <header className="header">
           <h1 className="header-title">Features of Blockpay</h1>
@@ -183,11 +187,11 @@ const Features = () => {
           <div className="logohome">BlockPay</div>
 
           <nav>
-            <a href="#about">About</a>
+            <a href="/about-us">About</a>
             <br />
             <br />
 
-            <a href="#updates">Contact us</a>
+            <a href="/contact-us">Contact us</a>
           </nav>
           <div className="socialshome">
             Let's get social:
