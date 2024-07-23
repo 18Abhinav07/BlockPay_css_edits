@@ -34,7 +34,7 @@ const Dashboard = ({ totalSalary }) => {
           </div>
         </div>
         <div className="inner">
-          <div>This month Deposit</div>
+          <div>Total salary to be paid</div>
           <div className="deposit">
             <div className="amount">{totalSalary}</div>
             <div className="dollar"></div>

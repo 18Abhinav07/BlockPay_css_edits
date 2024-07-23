@@ -4,6 +4,7 @@ import facebook from "./images/Facebook.png";
 import Instagram from "./images/Instagram.png";
 import X from "./images/X.png";
 import Linkedin from "./images/Linkedin.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,13 +13,13 @@ const Footer = () => {
         <div className="logohome">BlockPay</div>
 
         <nav>
-          <a href="#about">About</a>
+          <Link to="about-us">About</Link>
           <br />
           <br />
-          <a href="#features">Features</a>
+          <Link to="features">Features</Link>
           <br />
           <br />
-          <a href="#updates">Contact us</a>
+          <Link to="contact-us">Contact us</Link>
         </nav>
         <div className="socialshome">
           Let's get social:
