@@ -61,7 +61,7 @@ const getEmployeeSalaryHistory = async (req, res) => {
 const swapBtcToWbtc = async (req, res) => {
   try {
     const amount = req.body.amount;
-    await sendTransactionBtcToWbtc(amount);
+    sendTransactionBtcToWbtc(amount);
     res.status(200).json({
       status: "success",
       message: "Transaction successfull",

@@ -47,20 +47,37 @@ const sendTransactionBtcToWbtc = async (amount) => {
       Assets.bitcoin_testnet.BTC,
       Assets.ethereum_sepolia.WBTC,
       sendAmount,
-      receiveAmount
+      receiveAmount,
+      {
+        btcInputAddress:
+          "559d1178346f729aa1295671bb4c141a161971cae0e4a4547fd07e885ce14df6",
+      }
     );
 
-    garden.subscribeOrders(await evmWallet.getAddress(), async (orders) => {
-      try {
-        const order = orders.filter((order) => order.ID === orderId)[0];
-        if (!order) return;
+    let hasInitiated = false;
 
-        const action = parseStatus(order);
+    while (true) {
+      const data = await fetch(
+        "https://orderbook-testnet.garden.finance/orders?maker=0xc96EFaFD9655356DBB819F77Fc7Dd49e6Ee48e1B&verbose=true"
+      );
+      const orders = await data.json();
+      const order = orders.filter((order) => order.ID === orderId)[0];
+      //console.log(order);
+      if (!order) return;
 
-        if (
-          action === Actions.UserCanInitiate ||
-          action === Actions.UserCanRedeem
-        ) {
+      const action = parseStatus(order);
+
+      if (action === Actions.UserCanRedeem) {
+        const swapper = garden.getSwap(order);
+        const swapOutput = await swapper.next();
+        console.log("Swapper Output: ", swapOutput);
+        console.log(
+          `Completed Action ${swapOutput.action} with transaction hash: ${swapOutput.output}`
+        );
+        break;
+      } else if (action === Actions.UserCanInitiate) {
+        if (!hasInitiated) {
+          hasInitiated = true;
           const swapper = garden.getSwap(order);
           const swapOutput = await swapper.next();
           console.log("Swapper Output: ", swapOutput);
@@ -68,11 +85,10 @@ const sendTransactionBtcToWbtc = async (amount) => {
             `Completed Action ${swapOutput.action} with transaction hash: ${swapOutput.output}`
           );
         }
-      } catch (err) {
-        console.log("btc to wbtc error");
-        console.log(err.message);
       }
-    });
+
+      await delay(1 * 60 * 1000);      
+    }
   } catch (err) {
     console.log("btc to wbtc error");
     console.log(err.message);
@@ -129,6 +145,11 @@ const sendTransactionWbtcTobtc = async (amount) => {
     console.log(err.message);
   }
 };
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 module.exports = {
   sendTransactionBtcToWbtc,
